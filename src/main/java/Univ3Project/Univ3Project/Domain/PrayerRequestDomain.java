@@ -7,16 +7,19 @@ import java.time.LocalDate;
 
 @Entity
 @NoArgsConstructor
-public class UserDomain {
+public class PrayerRequestDomain {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private String phoneNumber;
-    private String userId;
-    private String passwordHash;
-    private LocalDate birthday;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserDomain user;
+
+    private LocalDate date;
+    private String prayerRequest;
+    private String comments;
 
     // Standard getters and setters...
 }
+
